@@ -1,12 +1,12 @@
 # IoT-Smart-Irrigation-Dashboard
 
-📌 Overview
+# 📌 Overview
 
 This project is a smart irrigation dashboard that shows real-time data from field sensors. It helps in monitoring environmental conditions and controlling water usage efficiently.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🎯 Purpose
+# 🎯 Purpose
 
 Save water
 
@@ -14,7 +14,9 @@ Reduce manual work
 
 Monitor field conditions remotely
 
-⚙️ What I Did
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ⚙️ What I Did
 
 1. Built a web dashboard using HTML, CSS, and JavaScript
 
@@ -26,13 +28,17 @@ Monitor field conditions remotely
 
 5. Showed pump ON/OFF status dynamically
 
-🛠️ Technologies
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🛠️ Technologies
 
 HTML, CSS, JavaScript
 
 ThingSpeak Cloud
 
-Conclusion: 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Conclusion: 
 
 This project shows how IoT can be used for smart irrigation to improve efficiency and reduce water wastage.
 
