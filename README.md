@@ -3,6 +3,7 @@
 📌 Overview
 
 This project is a smart irrigation dashboard that shows real-time data from field sensors. It helps in monitoring environmental conditions and controlling water usage efficiently.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🎯 Purpose
 
