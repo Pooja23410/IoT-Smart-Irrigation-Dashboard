@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Irrigation IoT Dashboard</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #00eaff;
+}
+
+.value {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.unit {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.on { background: #00c853; }
+.off { background: #d50000; }
+
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<header>🌱 Smart Irrigation IoT Dashboard</header>
+
+<div class="dashboard">
+  <div class="card">
+    <h2>Temperature</h2>
+    <div class="value" id="temp">--</div>
+    <div class="unit">°C</div>
+  </div>
+
+  <div class="card">
+    <h2>Humidity</h2>
+    <div class="value" id="hum">--</div>
+    <div class="unit">%</div>
+  </div>
+
+  <div class="card">
+    <h2>Soil Moisture</h2>
+    <div class="value" id="moist">--</div>
+  </div>
+
+  <div class="card">
+    <h2>Ultrasonic 1</h2>
+    <div class="value" id="u1">--</div>
+    <div class="unit">cm</div>
+  </div>
+
+  <div class="card">
+    <h2>Ultrasonic 2</h2>
+    <div class="value" id="u2">--</div>
+    <div class="unit">cm</div>
+  </div>
+
+  <div class="card">
+    <h2>Pump Status</h2>
+    <div class="value" id="pumpText">--</div>
+    <div class="status off" id="pumpStatus">OFF</div>
+  </div>
+</div>
+
+<footer>
+  Auto Refresh Every 5 Seconds | ThingSpeak Cloud
+</footer>
+
+<script>
+const url = "https://api.thingspeak.com/channels/549041/feeds.json?results=1";
+
+async function fetchData() {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const feed = data.feeds[0];
+
+    document.getElementById("temp").innerText = feed.field1 ?? "--";
+    document.getElementById("hum").innerText = feed.field2 ?? "--";
+    document.getElementById("moist").innerText = feed.field3 ?? "--";
+    document.getElementById("u1").innerText = feed.field4 ?? "--";
+    document.getElementById("u2").innerText = feed.field5 ?? "--";
+
+    const pump = feed.field6;
+    const pumpText = document.getElementById("pumpText");
+    const pumpStatus = document.getElementById("pumpStatus");
+
+    if (pump == "1") {
+      pumpText.innerText = "Pump 1 ON";
+      pumpStatus.innerText = "ON";
+      pumpStatus.className = "status on";
+    } 
+    else if (pump == "2") {
+      pumpText.innerText = "Pump 2 ON";
+      pumpStatus.innerText = "ON";
+      pumpStatus.className = "status on";
+    } 
+    else {
+      pumpText.innerText = "All OFF";
+      pumpStatus.innerText = "OFF";
+      pumpStatus.className = "status off";
+    }
+
+  } catch (error) {
+    console.error("Error fetching data", error);
+  }
+}
+
+fetchData();
+setInterval(fetchData, 5000);
+</script>
+
+</body>
+</html>
