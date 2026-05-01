@@ -4,7 +4,6 @@
 
 This project is a smart irrigation dashboard that shows real-time data from field sensors. It helps in monitoring environmental conditions and controlling water usage efficiently.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # 🎯 Purpose
 
@@ -14,7 +13,6 @@ Reduce manual work
 
 Monitor field conditions remotely
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # ⚙️ What I Did
 
@@ -28,7 +26,7 @@ Monitor field conditions remotely
 
 5. Showed pump ON/OFF status dynamically
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 # 🛠️ Technologies
 
@@ -36,7 +34,6 @@ HTML, CSS, JavaScript
 
 ThingSpeak Cloud
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Conclusion: 
 
